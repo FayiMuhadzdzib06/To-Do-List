@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+body {
+    background-color: rgb(34, 34, 34);
+}
+.container {
+    max-width: calc(100% - 200px);
+    height: 600px;
+    margin: 20px auto 0;
+    display: grid;
+    grid-template-areas: 'header',
+                            'isi',
+                            'input';
+    grid-template-rows: 70px 2fr 60px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+}
+.container::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(to bottom right, #03fcbd, #001510);
+    z-index: -1;
+    border-radius: 50%;
+    top: 70px;
+    left: -30px;
+    animation: kecil 1.2s linear infinite alternate;
+}
+@keyframes kecil {
+    to{
+        transform: translateX(-40px);
+    }
+}
+.container::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(to bottom right, #03fcbd, #001510);
+    z-index: -1;
+    border-radius: 50%;
+    bottom: 70px;
+    right: -30px;
+    animation: besar 1.2s .5s linear infinite alternate;
+}
+@keyframes besar {
+    to{
+        transform: translateX(40px);
+    }
+}
+.container .header {
+    grid-area: 'header';
+    width: 100%;
+    height: 100%;
+    background-color: #03cc9a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.container .header h1 {
+    color: #fff;
+}
+/* isi */
+.container .isi {
+    width: 100%;
+    height: 100%;
+    grid-area: 'isi';
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-left: 2px solid rgba(221, 221, 221, 0.1);
+}
+.isi-input {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-areas: 'teks button';
+    grid-template-columns: 2fr 25px;
+    cursor: pointer;
+}
+.container .isi .checkBG {
+    background-color: rgb(97, 97, 97);
+}
+.container .isi .isi-input-grid {
+    grid-template-areas: 'ceklis teks button';
+    grid-template-columns: 50px 2fr 25px;
+}
+.done {
+    display: none;
+}
+.isi-input .ceklis {
+    grid-area: 'ceklis';
+    display: block;
+}
+.isi-input .ceklis::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 11px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #fff;
+    transform: rotate(-35deg);
+    margin-top: 11px;
+    margin-left: 6px;
+}
+.isi-input .ceklis::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 21px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #fff;
+    transform: rotate(55deg);
+    margin-left: 17px;
+    margin-top: 4px;
+}
+.isi-input span {
+    grid-area: 'teks';
+    padding-right: 10px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.isi-input span.checked {
+    text-decoration: line-through;
+    color: #fff;
+}
+.isi-input .delete {
+    grid-area: 'button';
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.678);
+    cursor: pointer;
+    font-size: 15px;
+    transition: .5s;
+}
+.isi-input .delete:hover {
+    background-color: rgb(248, 3, 3);
+    color: #fff;
+}
+
+/* inputan */
+.container .parentInput {
+    width: 100%;
+    height: 100%;
+    grid-area: 'input';
+    display: grid;
+    grid-template-areas: 'ingput btnSubmit';
+    grid-template-columns: 80%  20%;
+}
+.container .parentInput input {
+    grid-area: 'ingput';
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 20px;
+    font-size: 18px;
+    border-bottom-left-radius: 5px;
+}
+input:focus{
+    outline: none;
+}
+.container .parentInput #btn {
+    grid-area: 'btnSubmit';
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #03cc9a;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    border-bottom-right-radius: 5px;
+}
+.container .parentInput #btn:hover {
+    background-color: #03cc9a9d;
+}
